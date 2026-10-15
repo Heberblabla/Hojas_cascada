@@ -1,0 +1,16 @@
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; padding: 24px; display: grid; place-items: center; background: #eff6ff; color: #172554; font-family: Arial,sans-serif; text-align: center; }
+h1 { margin: 0 0 12px; } p { line-height: 1.6; }
+.escena { position: relative; width: 240px; height: 240px; margin: 36px auto 0; }
+.logo { position: absolute; left: 70px; bottom: 26px; width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg,#2563eb,#4f46e5); color: #fff; display: grid; place-items: center; font-size: 26px; font-weight: bold; animation: rebote 1.4s ease-in-out infinite alternate; }
+/* 0 y 100 % están en el suelo; 50 % es el punto más alto.
+   alternate recorre el siguiente ciclo en sentido inverso, como pide la guía. */
+@keyframes rebote { 0% { transform: translateY(0); } 50% { transform: translateY(-100px); } 100% { transform: translateY(0); } }
+.sombra { position: absolute; left: 70px; bottom: 10px; width: 100px; height: 14px; border-radius: 50%; background: rgba(30,58,138,.3); animation: sombra 1.4s ease-in-out infinite alternate; }
+/* Mismos tiempos que el círculo: arriba = sombra más pequeña y tenue. */
+@keyframes sombra { 0% { transform: scaleX(1); opacity: .8; } 50% { transform: scaleX(.45); opacity: .3; } 100% { transform: scaleX(1); opacity: .8; } }
+
+/* Respetar la preferencia del sistema sin ocultar el contenido. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

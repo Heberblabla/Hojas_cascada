@@ -1,0 +1,22 @@
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #0f172a; font-family: Arial,sans-serif; }
+.banner { width: min(1100px,100%); padding: clamp(40px,9vw,110px) clamp(24px,6vw,72px); border-radius: 24px; color: #fff; text-align: center; background: linear-gradient(120deg,#172554,#4c1d95,#075985,#164e63); background-size: 400% 400%; background-position: 0% 50%;
+  /* name=fondo, duration=10s, timing=ease-in-out,
+     iteration-count=infinite, direction=alternate. Se anima background-position. */
+  animation: fondo 10s ease-in-out infinite alternate;
+}
+@keyframes fondo { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+h1 { margin: 16px 0; font-size: clamp(2rem,5vw,3.8rem); line-height: 1.12;
+  /* name=aparecer, duration=1.2s, timing=ease-out, delay=.2s,
+     iteration-count=1, fill-mode=both: oculta durante la espera y conserva el final. */
+  animation: aparecer 1.2s ease-out .2s 1 both;
+}
+@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
+p { margin: 0; line-height: 1.7; font-size: 1.05rem; }
+.etiqueta { font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; }
+/* Se desactivan ambas animaciones; el texto queda visible desde el inicio. */
+@media (prefers-reduced-motion: reduce) {
+  .banner,h1 { animation: none; }
+  .banner { background-position: 50% 50%; }
+  h1 { opacity: 1; }
+}
